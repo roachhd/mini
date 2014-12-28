@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+  <body>
+
+  {% include nav.html %}
+
+
+    <div class="row-fluid">
+      <div class="offset3 span9 main" id="title">
+          <h1>{{ page.title }}</h1>
+
+          <h2>{{ page.tagline }}</h2>
+
+          <p>{{ page.description }}</p>
+
+      </div>
+    </div>
+
+
+  <div class="row-fluid">
+      <div class="offset3 span9 post" id="links">
+        <br>
+        <div class="row-fluid">
+          <div class="span6">
+
+            <div class="anim-container">
+              <i class="icon-star"></i>
+              <a href="https://github.com/roachhd/mini">+1 on Github</a>
+            </div>
+
+            <div class="anim-container">
+              <i class="icon-search"></i>
+              <a href="http://katieball.me/">Other stuff</a>
+            </div>
+
+          </div>
+          <div class="span6">
+
+            <div class="anim-container">
+              <i class="icon-github"></i>
+              <a href="https://github.com/roachhd/mini">Clone</a>
+            </div>
+
+<!--
+            <div class="anim-container">
+              <i class="icon-list"></i>
+              <a href="/changelog.html">Changelog</a>
+            </div>
+
+-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="row-fluid">
+      <div class="offset3 span9 post">
+
+<!-- Content -->
+
+  {{ content }}
+
+<!-- end content -->
+      </div>
+    </div>
+  </div>
+
+{% include scripts.html %}
+
+</body>
+</html>
