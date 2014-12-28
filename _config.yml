@@ -1,0 +1,35 @@
+name: Mini
+
+# Includes an icon in the footer for each username you enter
+footer-links:
+  dribbble: 
+  email: 
+  facebook: 
+  flickr: 
+  github: roachhd/mini
+  instagram: 
+  linkedin: 
+  pinterest: 
+  rss: # just type anything here for a working RSS icon, make sure you set the "url" above!
+  twitter: mektball
+  stackoverflow: # your stackoverflow 
+
+disqus: 
+
+google_analytics: 
+
+url: http://roachhd.github.io/mini
+
+baseurl: "/mini"
+
+
+markdown: kramdown
+highlighter: pygments
+permalink: /:title/
+
+# Exclude these files from your production _site
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - README.md
