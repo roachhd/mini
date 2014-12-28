@@ -3,23 +3,12 @@
 {% include head.html %}
   <body>
 
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span3 toc">
-        <ul class="nav nav-list">
-          <li class="h0"><a href="/mini"><i class="icon-bookmark"></i>Home</a></li>
-            <li class="h1"><a href=""><i class="icon-bookmark"></i>Installing</a></li>
-            <li class="h1"><a href="#tutorial"><i class="icon-bookmark"></i>Tutorial</a></li>
-              <li class="h2"><a href="#launching_programs">Launching programs</a></li>
-              <li class="h2"><a href="#switching_between_layouts">Switching between layouts</a></li>
-              <li class="h2"><a href="#resizing_the_window">Resizing the window</a></li>
-            <li class="h1"><a href="#keyboard_shortcuts"><i class="icon-bookmark"></i>Keyboard shortcuts</a></li>
-         </ul>
-      </div>
-    </div>
+  {% include nav.html %}
+
+
     <div class="row-fluid">
       <div class="offset3 span9 main" id="title">
-          <h1>Title Here</h1>
+          <h1>{{ page.title }}</h1>
 
           <h2>A subtitle goes here </h2>
 
