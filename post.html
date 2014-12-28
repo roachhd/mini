@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>nwm - A dynamic window manager for X11 written with Node.js</title>
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/right.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="/assets/css/prettify.css"/>
+    <link type="text/css" rel="stylesheet" href="/assets/css/bootstrap-responsive.css"/>
+<!--    <link type="text/css" rel="stylesheet" href="/assets/css/github-highlight.css"/> -->
+<style type="text/css">
+#title h1 {
+  background-color: #D82545;
+}
+.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
+  background-color: #D82545;
+}
+
+a, a:hover, a:focus {
+  color: #D82545;
+}
+
+.nav > li > a {
+  color: #2c3e50;
+  padding-left: 38px;
+}
+
+.nav .icon-bookmark {
+  color: #D82545;
+}
+
+.ca-menu li:hover{
+  border-color: #D82545;
+}
+.ca-menu li:hover .ca-icon{
+  color: #D82545;
+  text-shadow: 0px 0px 1px #D82545;
+}
+.ca-menu li:hover .ca-main{
+  color: #D82545;
+}
+#links {
+  background-color: #D82545;
+  color: #fff;
+}
+.anim-container a{
+  color: #fff;
+}
+
+.toc {
+  position: absolute;
+}
+
+</style>
+  </head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span3 toc">
+        <ul class="nav nav-list"><li class="h0"><a href=""><i class="icon-bookmark"></i>index.html</a></li><li class="h1"><a href=""><i class="icon-bookmark"></i>Installing</a></li><li class="h1"><a href="#tutorial"><i class="icon-bookmark"></i>Tutorial</a></li><li class="h2"><a href="#launching_programs">Launching programs</a></li><li class="h2"><a href="#switching_between_layouts">Switching between layouts</a></li><li class="h2"><a href="#moving_focus">Moving focus</a></li><li class="h2"><a href="#using_workspaces">Using workspaces</a></li><li class="h2"><a href="#resizing_the_window">Resizing the window</a></li><li class="h2"><a href="#reordering_windows">Reordering windows</a></li><li class="h2"><a href="#closing_windows">Closing windows</a></li><li class="h2"><a href="#using_multiple_monitors">Using multiple monitors</a></li><li class="h1"><a href="#keyboard_shortcuts"><i class="icon-bookmark"></i>Keyboard shortcuts</a></li><li class="h1"><a href="#adding_nwm_under_your_logging_manager_as_an_alternative_under_linux"><i class="icon-bookmark"></i>Adding nwm under your logging manager as an alternative under Linux</a></li><li class="h2"><a href="#changing_keyboard_shortcuts">Changing keyboard shortcuts</a></li><li class="h2"><a href="#writing_new_layouts_and_reassigning_keyboard_shortcuts">Writing new layouts and reassigning keyboard shortcuts</a></li><li class="h2"><a href="#vertical_stack_tiling__e_g__dwm_s_tiling_">Vertical Stack Tiling (e.g. DWM's tiling)</a></li><li class="h2"><a href="#bottom_stack_tiling__a_k_a__wide_">Bottom Stack Tiling (a.k.a. wide)</a></li><li class="h2"><a href="#grid__a_k_a_fair_">Grid (a.k.a fair)</a></li><li class="h1"><a href="#running_under_a_secondary_x11_server__xephyr_"><i class="icon-bookmark"></i>Running under a secondary X11 server (Xephyr)</a></li><li class="h1"><a href="#tips_for_running_under_a_vm"><i class="icon-bookmark"></i>Tips for running under a VM</a></li></ul>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="offset3 span9 main" id="title">
+          <h1>Title hete</h1>
+
+          <h2>A subtitle goes here </h2>
+
+          <p>Add a bit of a description here about your project.</p>
+<h3>Why?</h3>
+<ul class="list">
+<li><p>Supported: Ubuntu, Arch, Fedora, Debian</p></li>
+<li><p>Dynamically tiling window manager with adjustable main window size</p></li>
+<li><p>Multiple monitor support (Xinerama)</p></li>
+<li><p>Workspaces/virtual desktops (0 - 9 by default)</p></li>
+<li><p>Layouts: vertical tiling, horizontal tiling, grid, fullscreen</p></li>
+<li><p>Each workspace can have its own layout</p></li>
+<li><p>Everything is defined/laid out in Javascript; a native X11 binding written in in C++/C emits events to Node.js</p></li>
+</ul>
+
+
+      </div>
+    </div>
+
+
+    <div class="row-fluid">
+      <div class="offset3 span9 post" id="links">
+        <br>
+        <div class="row-fluid">
+          <div class="span6">
+
+            <div class="anim-container">
+              <i class="icon-star"></i>
+              <a href="https://github.com/roachhd/mini">+1 on Github</a>
+            </div>
+
+            <div class="anim-container">
+              <i class="icon-search"></i>
+              <a href="http://katieball.me/">Other stuff</a>
+            </div>
+
+          </div>
+          <div class="span6">
+
+            <div class="anim-container">
+              <i class="icon-github"></i>
+              <a href="https://github.com/roachhd/mini">Clone</a>
+            </div>
+
+<!--
+            <div class="anim-container">
+              <i class="icon-list"></i>
+              <a href="/changelog.html">Changelog</a>
+            </div>
+
+-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="content" class="row-fluid">
+      <div class="offset3 span9 post">
+
+<!-- Content -->
+          <a name="installing"></a><h1>Installing<a class="anchorlink" href="#installing"></a></h1>
+<p>Prerequisites: a 0.8.x/0.6.x branch version of Node and xterm (if not installed). Install the following dev packages:</p>
+<ul class="list">
+<li>On Ubuntu (10.4) and Debian (6 stable): <code>sudo apt-get install libx11-dev libxinerama-dev</code></li>
+<li>On Arch (after installing X11): <code>sudo pacman -S xterm</code></li>
+<li>On Fedora: (need to update this)</li>
+<li>On OSX: nwm does unofficially run under X11 in OSX - see osx.md in the repo for instructions</li>
+</ul>
+<p>From github:</p>
+<pre class="prettyprint">git clone git://github.com/roachhd/mini.git
+rm -rf ./build
+npm install --production</pre>
+<p>If you are using Node 0.6.x, you need to checkout src/nwm_node.cc at revision db3545413d:</p>
+<pre class="prettyprint">git clone git://github.com/roachhd/mini.git
+git checkout db3545413d src/nwm/nwm_node.cc
+rm -rf ./build
+npm install --production</pre>
+<p>This is because - sadly - the uv<em>poll</em>* functionality does not exist in the version of libuv bundled with node 0.6.x. But thanks to NOT writing the vast majority of the native binding in C++, this workaround will work for quite a while until you upgrade.</p>
+<p>See further below for instructions on how to set up nwm as a desktop session under GDM/Gnome.</p>
+<a name="tutorial"></a><h1>Tutorial<a class="anchorlink" href="#tutorial"></a></h1>
+<p>Youtube: <a href="http://www.youtube.com/watch?v=sihgPfBj6yE">http://www.youtube.com/watch?v=sihgPfBj6yE</a> (sorry for the crappy audio!)</p>
+<a name="launching_programs"></a><h2>Launching programs<a class="anchorlink" href="#launching_programs"></a></h2>
+<p>When you start nwm, you will be presented with an empty screen.</p>
+<p>To start a terminal (xterm), press: <code>Win + Shift + Enter</code>. nwm takes care of dynamically rearranging windows. Launch a second terminal by pressing <code>Win + Shift + Enter</code> again.</p>
+<p>Other programs are launched from the console. For example: <code>google-chrome &amp;</code> launches Google Chrome, if you have it installed.</p>
+<a name="switching_between_layouts"></a><h2>Switching between layouts<a class="anchorlink" href="#switching_between_layouts"></a></h2>
+<p>nwm comes bundled with a number of different layouts. Press: <code>Win + Space</code> to toggle between different layouts.</p>
+<a name="moving_focus"></a><h2>Moving focus<a class="anchorlink" href="#moving_focus"></a></h2>
+<p>Move the mouse on top of the window you want to focus. You can also use <code>Win + j</code> / <code>Win + k</code> if you don&#39;t like the mouse.</p>
+<a name="using_workspaces"></a><h2>Using workspaces<a class="anchorlink" href="#using_workspaces"></a></h2>
+<p>The way I use nwm is by dedicating workspaces to different tasks (e.g. different programming projects, managing files, terminal windows). Each monitor has 9 workspaces, numbered from 1 to 9. To change the workspace, press:</p>
+<p><code>Win + [number key between from 1 to 9]</code></p>
+<p>To move the focused window to a different workspace, press:</p>
+<p><code>Win + Shift + [number key between from 1 to 9]</code></p>
+<p>If you have more than one monitor attached, then you will have 9 workspaces on each monitor. You can change the layout on each workspace individually.</p>
+<a name="resizing_the_window"></a><h2>Resizing the window<a class="anchorlink" href="#resizing_the_window"></a></h2>
+<p>Sometimes, you want to make one of the windows larger or smaller than the others, like a terminal window next to a web browser window.</p>
+<p>In nwm, the window on the right hand side is considered to be the main window.</p>
+<p>Press: <code>Win + H</code> or <code>Win + F10</code> to shrink the main window.</p>
+<p>Press: <code>Win + L</code> or <code>Win + F11</code> to grow the main window.</p>
+<p>You can change the main window size setting for each workspace separately.</p>
+<a name="reordering_windows"></a><h2>Reordering windows<a class="anchorlink" href="#reordering_windows"></a></h2>
+<p>To set the focused window as the main window, use Win + Tab.</p>
+<a name="closing_windows"></a><h2>Closing windows<a class="anchorlink" href="#closing_windows"></a></h2>
+<p>To close the currently focused window, press: <code>Win + shift + c</code></p>
+<a name="using_multiple_monitors"></a><h2>Using multiple monitors<a class="anchorlink" href="#using_multiple_monitors"></a></h2>
+<p>This is basically just like using workspaces. You can move the currently focused window to a different screen by pressing: <code>Win + Shift + ,</code> and <code>Win + Shift + .</code></p>
+<p>That&#39;s it.</p>
+<a name="keyboard_shortcuts"></a><h1>Keyboard shortcuts<a class="anchorlink" href="#keyboard_shortcuts"></a></h1>
+<pre class="prettyprint"># Launching programs
+Meta + Shift + Enter -- Start xterm
+
+# Switching between layouts
+Meta + Space -- Switch between tile, monocle, wide and grid layouts
+
+# Focus
+Meta + j -- Focus next window
+Meta + k -- Focus previous window
+
+# Main window
+Meta + h -- Decrease master area size
+Meta + F10
+Meta + l -- Increase master area size
+Meta + F11
+Meta + Enter -- Sets currently focused window as main window
+
+# Closing windows
+Meta + Shift + c -- Close focused window
+
+# Workspaces
+Meta + [1..n] -- Switch to workspace n
+Meta + Shift + [1..n] -- Move window to workspace n
+
+# Multi-monitor keys
+Meta + Shift + , -- Send focused window to previous screen
+Meta + Shift + . -- Send focused window to next screen</pre>
+<a name="adding_nwm_under_your_logging_manager_as_an_alternative_under_linux"></a><h1>Adding nwm under your logging manager as an alternative under Linux<a class="anchorlink" href="#adding_nwm_under_your_logging_manager_as_an_alternative_under_linux"></a></h1>
+<p>If you are using Gnome (GDM as login manager)</p>
+<p>1: Create nwm.sh somewhere (and chmod +x it):</p>
+<pre class="prettyprint">#!/bin/sh
+/usr/local/bin/node /path/to/nwm-user-sample.js 2&gt; ~/nwm.err.log 1&gt; ~/nwm.log</pre>
+<p>Note: run &quot;which node&quot; to find out the path to Node in the script above.</p>
+<p>2: add the following as nwm.desktop to /usr/share/xsessions:</p>
+<pre class="prettyprint">[Desktop Entry]
+Encoding=UTF-8
+Name=nwm
+Comment=This session starts nwm
+Exec=/PATH/TO/nwm.sh
+Type=Application</pre>
+<p>Select &quot;nwm&quot; from the Sessions menu when logging in. If you run into issues, have a look at ~/nwm.err.log. Mostly, it&#39;s a matter of getting all the paths (to Node, to the nwm files) right.</p>
+<a name="changing_keyboard_shortcuts"></a><h2>Changing keyboard shortcuts<a class="anchorlink" href="#changing_keyboard_shortcuts"></a></h2>
+<p>To customize the keyboard shortcuts, change nwm-user-sample.js. Let&#39;s look at the keyboard shortcut for xterm in nwm-user-sample.js:</p>
+<pre class="prettyprint">{
+  key: &#39;Return&#39;, // enter key launches xterm
+  modifier: [ &#39;shift&#39; ],
+  callback: function(event) {
+    child_process.spawn(&#39;xterm&#39;, [&#39;-lc&#39;], { env: process.env });
+  }
+},</pre>
+<p>There are three parts to a basic shortcut:</p>
+<ul class="list">
+<li>The key (&#39;Return&#39;). You can find the names of the keys in ./lib/keysyms.js.</li>
+<li>The modifier key ([ &#39;shift&#39; ]). You can use shift or ctrl.</li>
+<li>The callback.</li>
+</ul>
+<a name="writing_new_layouts_and_reassigning_keyboard_shortcuts"></a><h2>Writing new layouts and reassigning keyboard shortcuts<a class="anchorlink" href="#writing_new_layouts_and_reassigning_keyboard_shortcuts"></a></h2>
+<p>For more extensive customization, see <a href="https://github.com/mixu/nwm-user">https://github.com/mixu/nwm-user</a> which has a package.json file and hence makes it possible to git clone + npm install your window manager.</p>
+<a name="vertical_stack_tiling__e_g__dwm_s_tiling_"></a><h2>Vertical Stack Tiling (e.g. DWM&#39;s tiling)<a class="anchorlink" href="#vertical_stack_tiling__e_g__dwm_s_tiling_"></a></h2>
+<p class="img-container"><img src="https://github.com/mixu/nwm/raw/master/docs/screenshots/tile.png" alt="screenshot"></p>
+<a name="bottom_stack_tiling__a_k_a__wide_"></a><h2>Bottom Stack Tiling (a.k.a. wide)<a class="anchorlink" href="#bottom_stack_tiling__a_k_a__wide_"></a></h2>
+<p class="img-container"><img src="https://github.com/mixu/nwm/raw/master/docs/screenshots/wide.png" alt="screenshot"></p>
+<a name="grid__a_k_a_fair_"></a><h2>Grid (a.k.a fair)<a class="anchorlink" href="#grid__a_k_a_fair_"></a></h2>
+<p class="img-container"><img src="https://github.com/mixu/nwm/raw/master/docs/screenshots/grid.png" alt="screenshot"></p>
+<a name="running_under_a_secondary_x11_server__xephyr_"></a><h1>Running under a secondary X11 server (Xephyr)<a class="anchorlink" href="#running_under_a_secondary_x11_server__xephyr_"></a></h1>
+<p>If you want to test or develop nwm, the easiest way is to use Xephyr:</p>
+<pre class="prettyprint"># start Xephyr
+Xephyr -screen 1024x768 -nodri -br :1 &amp;
+# export gedit to the X server on display 1
+DISPLAY=:1 gedit
+DISPLAY=:1 gnome-terminal
+# now start nwm.js on display 1
+DISPLAY=:1 node nwm-user-sample.js</pre>
+<p>Under Xephyr, the base key combination is Ctrl+Meta (e.g. Ctrl+Win). When running natively, the base key is Meta (Win). This is so that I can test nwm inside itself, yet have decent shortcuts:</p>
+<a name="tips_for_running_under_a_vm"></a><h1>Tips for running under a VM<a class="anchorlink" href="#tips_for_running_under_a_vm"></a></h1>
+<p>Some tips for running nwm in a VM:</p>
+<ul class="list">
+<li>If you use VMware Workstation, you have to start vmware-user manually for multi-monitor support via Xinerama after starting nwm.</li>
+<li>If you use VirtualBox, you have to use xrandr manually for multi-monitor support (e.g. xrandr --output VBOX0 --auto --left-of VBOX1).</li>
+</ul>
+<p>VirtualBox sometimes gets your virtual screen sizes wrong. If this happens, you need to rerun xrandr, otherwise Xinerama reports the starting index of your second display incorrectly. You can see this by running xrandr:</p>
+<pre class="prettyprint">VBOX0 connected 1440x900+0+0 0mm x 0mm
+VBOX1 connected 2560x1440+2560+0 0mm x 0mm
+                          !!!!</pre>
+<p>The display VBOX1 is marked as starting at x=2560 even though VBOX0 ends at 1440. This was because VirtualBox resized the VBOX0 screen incorrectly when you ran xrandr. This is a VirtualBox bug, not a nwm one.</p>
+
+<!-- end content -->
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script> -->
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<!--  <script type="text/javascript" src="/assets/js/prettify.js"></script> -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
+
+  <script type="text/javascript">$(function() { prettyPrint(); });</script>
+</body>
+</html>
+
